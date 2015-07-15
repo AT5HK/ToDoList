@@ -18,6 +18,7 @@
 		5049272D1B56B327003623D7 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5049272C1B56B327003623D7 /* ToDo.m */; };
 		504927301B56B612003623D7 /* ToDoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5049272F1B56B612003623D7 /* ToDoList.m */; };
 		504927331B56BA25003623D7 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 504927321B56BA25003623D7 /* CustomTableViewCell.m */; };
+		504927361B56D35C003623D7 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504927351B56D35C003623D7 /* AddItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		5049272F1B56B612003623D7 /* ToDoList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoList.m; sourceTree = "<group>"; };
 		504927311B56BA25003623D7 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		504927321B56BA25003623D7 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		504927341B56D35C003623D7 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
+		504927351B56D35C003623D7 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				5049272F1B56B612003623D7 /* ToDoList.m */,
 				504927311B56BA25003623D7 /* CustomTableViewCell.h */,
 				504927321B56BA25003623D7 /* CustomTableViewCell.m */,
+				504927341B56D35C003623D7 /* AddItemViewController.h */,
+				504927351B56D35C003623D7 /* AddItemViewController.m */,
 				5049270F1B56B2E6003623D7 /* Main.storyboard */,
 				504927121B56B2E6003623D7 /* Images.xcassets */,
 				504927141B56B2E6003623D7 /* LaunchScreen.xib */,
@@ -240,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5049272D1B56B327003623D7 /* ToDo.m in Sources */,
+				504927361B56D35C003623D7 /* AddItemViewController.m in Sources */,
 				504927331B56BA25003623D7 /* CustomTableViewCell.m in Sources */,
 				504927081B56B2E6003623D7 /* AppDelegate.m in Sources */,
 				5049270B1B56B2E6003623D7 /* MasterViewController.m in Sources */,

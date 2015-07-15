@@ -4,13 +4,12 @@
 //
 //  Created by Auston Salvana on 7/15/15.
 //  Copyright (c) 2015 ASolo. All rights reserved.
-//
-
+//;
 #import "MasterViewController.h"
 #import "DetailViewController.h"
-#import "ToDo.h"
 #import "ToDoList.h"
 #import "CustomTableViewCell.h"
+#import "AddItemViewController.h"
 
 @interface MasterViewController ()
 
@@ -32,6 +31,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.toDoList = [[ToDoList alloc]init];
+    self.objects = [self.toDoList.toDoListArray mutableCopy];
 //    NSLog(@"%@", [[list.toDoListArray objectAtIndex:1] cellDescription]);
 }
 
@@ -41,22 +41,40 @@
 }
 
 - (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    ToDo *addToDoItem = [[ToDo alloc]init];
+    [self performSegueWithIdentifier:@"AddItemViewController" sender:addToDoItem];
 }
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"DetailViewController"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
+        ToDo *object = self.objects[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
+    else if ([[segue identifier] isEqualToString:@"AddItemViewController"]) {
+        [[segue destinationViewController] setMakeToDoItem:sender];
+    }
+}
+
+- (IBAction)unwindToMaster:(UIStoryboardSegue *)unwindSegue
+{
+    
+    AddItemViewController *sourceViewController = unwindSegue.sourceViewController;
+    if ([sourceViewController isKindOfClass:[AddItemViewController class]]) {
+        self.madeToDoItem = sourceViewController.makeToDoItem;
+        NSLog(@"sourceView: %@",sourceViewController.makeToDoItem );
+            if (!self.objects) {
+                self.objects = [[NSMutableArray alloc] init];
+            }
+            [self.objects insertObject:self.madeToDoItem atIndex:0];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+        NSLog(@"waf");
+    }
+   
 }
 
 #pragma mark - Table View
@@ -66,8 +84,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.objects.count;
-    return self.toDoList.toDoListArray.count;
+    return self.objects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,7 +92,9 @@
 
 //    NSDate *object = self.objects[indexPath.row];
 //    cell.textLabel.text = [object description];
-    cell.textLabel.text = [self.toDoList.toDoListArray[indexPath.row] title];
+    cell.cellTitle.text = [self.objects[indexPath.row] title];
+    cell.cellDescription.text = [self.objects[indexPath.row] cellDescription];
+    cell.cellPriority.text = [NSString stringWithFormat:@"Priority number: %ld",(long)[self.objects[indexPath.row] priorityNumber]];
     return cell;
 }
 

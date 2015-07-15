@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDo.h"
 
 @interface MasterViewController : UITableViewController
 
-
+@property (nonatomic) ToDo *madeToDoItem;
 @end
 

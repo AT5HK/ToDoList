@@ -15,6 +15,7 @@
 
 @property NSMutableArray *objects;
 @property (nonatomic) ToDoList *toDoList;
+@property (nonatomic) NSInteger savedIndex;
 @end
 
 @implementation MasterViewController
@@ -51,6 +52,7 @@
     if ([[segue identifier] isEqualToString:@"DetailViewController"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ToDo *object = self.objects[indexPath.row];
+        self.savedIndex = indexPath.row;
         [[segue destinationViewController] setDetailItem:object];
     }
     else if ([[segue identifier] isEqualToString:@"AddItemViewController"]) {
@@ -60,11 +62,12 @@
 
 - (IBAction)unwindToMaster:(UIStoryboardSegue *)unwindSegue
 {
+    AddItemViewController *addItemVC = unwindSegue.sourceViewController;
+    DetailViewController *detailVC = unwindSegue.sourceViewController;
     
-    AddItemViewController *sourceViewController = unwindSegue.sourceViewController;
-    if ([sourceViewController isKindOfClass:[AddItemViewController class]]) {
-        self.madeToDoItem = sourceViewController.makeToDoItem;
-        NSLog(@"sourceView: %@",sourceViewController.makeToDoItem );
+    if ([addItemVC isKindOfClass:[AddItemViewController class]]) {
+        self.madeToDoItem = addItemVC.makeToDoItem;
+//        NSLog(@"sourceView: %@",sourceViewController.makeToDoItem );
             if (!self.objects) {
                 self.objects = [[NSMutableArray alloc] init];
             }
@@ -72,9 +75,15 @@
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
             [self.tableView insertRowsAtIndexPaths:@[indexPath]
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
-        NSLog(@"waf");
+       
     }
-   
+    else if ([detailVC isKindOfClass:[DetailViewController class]]) {
+        if (!self.objects) {
+            self.objects = [[NSMutableArray alloc] init];
+        }
+        [self.objects replaceObjectAtIndex:self.savedIndex withObject:detailVC.detailItem];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Table View data source
@@ -94,6 +103,7 @@
     cell.cellTitle.text = object.title;
     cell.cellDescription.text = object.cellDescription;
     cell.cellPriority.text = [NSString stringWithFormat:@"Priority number: %ld",(long)object.priorityNumber];
+    cell.deadLine.text = [NSString stringWithFormat:@"Deadline due date: %@",object.deadLine];
     
     if (object.isCompletedIndicator) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;

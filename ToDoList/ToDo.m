@@ -18,6 +18,7 @@
         self.title = itemTitle;
         self.cellDescription = description;
         self.priorityNumber = priority;
+        self.deadLine = [NSDate date];
     }
     return self;
 }

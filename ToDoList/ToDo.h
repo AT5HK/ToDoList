@@ -14,6 +14,7 @@
 @property (nonatomic) NSString *cellDescription;
 @property (nonatomic) NSInteger priorityNumber;
 @property (nonatomic) BOOL isCompletedIndicator;
+@property (nonatomic) NSDate *deadLine;
 
 - (instancetype)initWithTitle:(NSString*)itemTitle descriptionOfTask:(NSString*)description priorityNumber:(NSInteger)priority;
 

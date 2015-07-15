@@ -7,7 +7,8 @@
 //
 
 #import "DetailViewController.h"
-#import "ToDo.h"
+
+
 
 @interface DetailViewController ()
 
@@ -29,7 +30,7 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem cellDescription];
+        self.detailDescriptionLabel.text = self.detailItem.cellDescription;
     }
 }
 
@@ -44,4 +45,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)datePickerAction:(id)sender {
+    self.detailItem.deadLine = self.datePicker.date;
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.detailItem.deadLine = self.datePicker.date;
+    
+}
 @end

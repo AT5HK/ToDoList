@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cellTitle;
 @property (weak, nonatomic) IBOutlet UILabel *cellDescription;
 @property (weak, nonatomic) IBOutlet UILabel *cellPriority;
+@property (weak, nonatomic) IBOutlet UILabel *deadLine;
 
 @end

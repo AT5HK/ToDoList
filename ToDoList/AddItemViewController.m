@@ -32,5 +32,8 @@
     self.makeToDoItem.cellDescription = self.itemDescription.text;
     self.makeToDoItem.priorityNumber = [self.itemPriority.text integerValue];
 }
+- (IBAction)cancelToMaster:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

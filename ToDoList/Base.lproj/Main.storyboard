@@ -102,12 +102,12 @@
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Master" id="pGg-6v-bdr" customClass="MasterViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="76" id="m0d-ak-lc9" customClass="CustomTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="95" id="m0d-ak-lc9" customClass="CustomTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
@@ -121,29 +121,30 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVj-iD-qJf">
-                                            <rect key="frame" x="8" y="19" width="559" height="24"/>
+                                            <rect key="frame" x="8" y="32" width="559" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="priority level: 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zS-PU-Hyq">
-                                            <rect key="frame" x="8" y="39" width="118" height="24"/>
+                                            <rect key="frame" x="8" y="64" width="118" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="6zS-PU-Hyq" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leadingMargin" id="3oL-FY-Ztv"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="QVj-iD-qJf" secondAttribute="bottom" constant="24" id="64D-1F-zND"/>
-                                        <constraint firstItem="up5-0r-nkp" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leadingMargin" id="DAm-qt-2wV"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="6zS-PU-Hyq" secondAttribute="bottom" constant="4" id="Irt-ix-WGC"/>
-                                        <constraint firstItem="QVj-iD-qJf" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leadingMargin" id="OAR-Gr-5qB"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="QVj-iD-qJf" secondAttribute="trailing" constant="-8" id="SW6-vo-d21"/>
-                                        <constraint firstItem="up5-0r-nkp" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="topMargin" constant="-8" id="yDr-Tf-43w"/>
+                                        <constraint firstItem="up5-0r-nkp" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="topMargin" constant="-8" id="1M2-4e-1W1"/>
+                                        <constraint firstItem="QVj-iD-qJf" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leadingMargin" id="4nG-gh-US6"/>
+                                        <constraint firstItem="QVj-iD-qJf" firstAttribute="top" secondItem="up5-0r-nkp" secondAttribute="bottom" constant="8" id="57z-gQ-GTT"/>
+                                        <constraint firstItem="6zS-PU-Hyq" firstAttribute="top" secondItem="QVj-iD-qJf" secondAttribute="bottom" constant="8" id="9Yd-pA-iz1"/>
+                                        <constraint firstItem="6zS-PU-Hyq" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leadingMargin" id="gvi-rq-oJ9"/>
+                                        <constraint firstItem="up5-0r-nkp" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leadingMargin" id="kS1-FW-O51"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="QVj-iD-qJf" secondAttribute="trailing" constant="-8" id="lBZ-TE-J2U"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="cellDescription" destination="QVj-iD-qJf" id="mQ8-qR-SMS"/>
                                     <outlet property="cellPriority" destination="6zS-PU-Hyq" id="KE1-Wg-6BR"/>
@@ -156,6 +157,7 @@
                         <connections>
                             <outlet property="dataSource" destination="pGg-6v-bdr" id="P41-gY-KXY"/>
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
+                            <outletCollection property="gestureRecognizers" destination="sey-k2-1cw" appends="YES" id="wNr-3U-6FK"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="tQt-TN-PWz"/>
@@ -164,6 +166,12 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="sey-k2-1cw">
+                    <connections>
+                        <action selector="swipeGest:" destination="pGg-6v-bdr" id="Mjt-dH-FWe"/>
+                        <outlet property="delegate" destination="pGg-6v-bdr" id="QxZ-CL-i35"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="605" y="64"/>
         </scene>

@@ -11,6 +11,7 @@
 
 @interface MasterViewController : UITableViewController
 
+- (IBAction)swipeGest:(id)sender;
 @property (nonatomic) ToDo *madeToDoItem;
 @end
 

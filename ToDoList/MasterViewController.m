@@ -77,7 +77,7 @@
    
 }
 
-#pragma mark - Table View
+#pragma mark - Table View data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -90,14 +90,37 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-//    NSDate *object = self.objects[indexPath.row];
-//    cell.textLabel.text = [object description];
-    cell.cellTitle.text = [self.objects[indexPath.row] title];
-    cell.cellDescription.text = [self.objects[indexPath.row] cellDescription];
-    cell.cellPriority.text = [NSString stringWithFormat:@"Priority number: %ld",(long)[self.objects[indexPath.row] priorityNumber]];
+    ToDo *object = self.objects[indexPath.row];
+    cell.cellTitle.text = object.title;
+    cell.cellDescription.text = object.cellDescription;
+    cell.cellPriority.text = [NSString stringWithFormat:@"Priority number: %ld",(long)object.priorityNumber];
+    
+    if (object.isCompletedIndicator) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.cellTitle.attributedText = [self crossOutText:cell.cellTitle.text];
+        cell.cellDescription.attributedText = [self crossOutText:cell.cellDescription.text];
+        cell.cellPriority.attributedText = [self crossOutText:cell.cellPriority.text];
+        
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
+#pragma mark - tableView delegate
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < [self.objects count]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self.objects exchangeObjectAtIndex:sourceIndexPath.row
+                      withObjectAtIndex:destinationIndexPath.row];
+}
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
@@ -110,6 +133,33 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+#pragma mark - Swipe Gesture
+
+- (IBAction)swipeGest:(id)sender {
+    UISwipeGestureRecognizer *swipe = sender;
+    CGPoint point = [swipe locationInView:self.tableView];
+    NSIndexPath *cellIndex = [self.tableView indexPathForRowAtPoint:point];
+    CustomTableViewCell *cell = (CustomTableViewCell*)[self.tableView cellForRowAtIndexPath:cellIndex];
+    
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    cell.cellTitle.attributedText = [self crossOutText:cell.cellTitle.text];
+    cell.cellDescription.attributedText = [self crossOutText:cell.cellDescription.text];
+    cell.cellPriority.attributedText = [self crossOutText:cell.cellPriority.text];
+    ToDo *object = self.objects[cellIndex.row];
+    object.isCompletedIndicator = YES;
+    NSLog(@"swipe");
+}
+
+#pragma mark - Helper methods
+
+-(NSAttributedString*)crossOutText:(NSString*)textToCross {
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:textToCross];
+    [attributeString addAttribute:NSStrikethroughStyleAttributeName
+                            value:@2
+                            range:NSMakeRange(0, [attributeString length])];
+    return attributeString;
 }
 
 @end
